@@ -1,0 +1,53 @@
+{{#> main }}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Daftar Kontak</h2>
+            <a href="/contact/add" class="btn btn-sm btn-primary">Tambah Kontak</a>
+            {{#if msg}}
+            <div class="alert alert-success mt-3 mb-3" role="alert">
+                {{ msg }}
+            </div>
+            {{/if}}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>No HP</th>
+                            <th colspan="2" class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#if contacts}}
+                        {{#each contacts as |contact|}}
+                        <tr>
+                            <td>{{no @index}}</td>
+                            <td>{{ contact.nama }}</td>
+                            <td>{{ contact.nohp }}</td>
+                            <td class="text-center"><button onclick="location.href='/contact/{{ contact.nama }}'"
+                                    class="btn btn-info badge rounded-pill"><i class="bi bi-info-circle"></i>
+                                    Detail</button></td>
+                            <td class="text-center"><a class="btn btn-danger badge rounded-pill"
+                                    href="/contact/delete/{{ contact.nama }}"
+                                    onclick="return confirm('Yakin?')">Hapus</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                        {{else}}
+                        <tr>
+                            <td colspan="4">
+                                <div class="alert alert-danger fw-bold">
+                                    Kontak tidak ada.
+                                </div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{/main}}

@@ -1,0 +1,25 @@
+{{#> main}}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Detail Contact</h2>
+            {{#if contact}}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ contact.nama }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ contact.nohp }}</h6>
+                    <p class="card-text">{{ contact.email }}</p>
+                    <a href="/contact/edit/{{ contact.nama }}" class="btn btn-primary badge rounded-pill">Ubah</a>
+                    <a href="/contact" class="d-block mt-3 card-link">&laquo; Kembali ke daftar kontak</a>
+                </div>
+            </div>
+            {{else}}
+            <div class="alert alert-danger fw-bold">
+                Kontak tidak ada. <br>
+                <a href="/contact" class="alert-link fw-normal">&laquo; Kembali ke daftar kontak</a>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+{{/main}}
